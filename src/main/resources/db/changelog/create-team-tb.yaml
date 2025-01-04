@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: vov4ishka88
+      preCondition:
+      #        - onFail: MARK_RAN
+      #          not:
+      #            tableExists:
+      #              tableName: customer
+      changes:
+        - createTable:
+            tableName: team
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: balance
+                  type: NUMERIC(38, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: commission_rate
+                  type: FLOAT(24)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/create-player-tb.yaml
+  - include:
+      file: db/changelog/create-team-tb.yaml
+  - include:
+      file: db/changelog/populate-sample-data.yaml

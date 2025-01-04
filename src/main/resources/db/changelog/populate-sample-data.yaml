@@ -1,0 +1,94 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: vov4ishka88
+      changes:
+        - insert:
+            tableName: team
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Red Dragons
+              - column:
+                  name: balance
+                  valueNumeric: 5000000.00
+              - column:
+                  name: commission_rate
+                  valueNumeric: 5.0
+        - insert:
+            tableName: team
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: Blue Sharks
+              - column:
+                  name: balance
+                  valueNumeric: 3000000.00
+              - column:
+                  name: commission_rate
+                  valueNumeric: 7.5
+
+  - changeSet:
+      id: 4
+      author: vov4ishka88
+      changes:
+        - insert:
+            tableName: player
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: John Doe
+              - column:
+                  name: age
+                  valueNumeric: 25
+              - column:
+                  name: experience_months
+                  valueNumeric: 36
+              - column:
+                  name: team_id
+                  value: 1
+        - insert:
+            tableName: player
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: Mike Smith
+              - column:
+                  name: age
+                  valueNumeric: 28
+              - column:
+                  name: experience_months
+                  valueNumeric: 48
+              - column:
+                  name: team_id
+                  value: 1
+        - insert:
+            tableName: player
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: Alice Brown
+              - column:
+                  name: age
+                  valueNumeric: 22
+              - column:
+                  name: experience_months
+                  valueNumeric: 24
+              - column:
+                  name: team_id
+                  value: 2
