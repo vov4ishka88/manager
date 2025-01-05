@@ -92,3 +92,12 @@ databaseChangeLog:
               - column:
                   name: team_id
                   value: 2
+
+  - changeSet:
+      id: update-team-sequence
+      author: vov4ishka88
+      changes:
+        - sql:
+            sql: ALTER TABLE team ALTER COLUMN id RESTART WITH 3;
+        - sql:
+            sql: ALTER TABLE player ALTER COLUMN id RESTART WITH 4;
