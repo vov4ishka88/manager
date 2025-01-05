@@ -3,7 +3,7 @@ package com.challenge.manager.controller;
 import com.challenge.manager.model.Player;
 import com.challenge.manager.service.PlayerService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/players")
+@RequiredArgsConstructor
 public class PlayerController {
 
-    @Autowired
-    private PlayerService playerService;
+    private final PlayerService playerService;
 
     @GetMapping()
     public List<Player> getAllPlayers(){
@@ -48,6 +48,19 @@ public class PlayerController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/{playerId}/transfer")
+    public ResponseEntity<String> transferPlayer(
+            @PathVariable Long playerId,
+            @RequestParam Long fromTeamId,
+            @RequestParam Long toTeamId){
+        try {
+            playerService.transferPlayer(playerId, fromTeamId, toTeamId);
+            return ResponseEntity.ok("Player transferred successfully");
+        } catch (IllegalStateException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     //TODO: consider if including team object for the player creation isn't too much
