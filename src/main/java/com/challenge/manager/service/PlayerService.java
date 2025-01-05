@@ -1,6 +1,7 @@
 package com.challenge.manager.service;
 
 import com.challenge.manager.model.Player;
+import com.challenge.manager.model.PlayerCreateRequest;
 import com.challenge.manager.model.Team;
 import com.challenge.manager.repository.PlayerRepository;
 import com.challenge.manager.repository.TeamRepository;
@@ -27,7 +28,14 @@ public class PlayerService {
         return playerRepository.findById(id);
     }
 
-    public Player createPlayer(Player player) {
+    public Player createPlayer(PlayerCreateRequest request) {
+        Team team = teamRepository.findById(request.getTeamId())
+                .orElseThrow(() -> new IllegalArgumentException("Team not found"));
+        Player player = new Player();
+        player.setName(request.getName());
+        player.setAge(request.getAge());
+        player.setExperienceMonths(request.getExperienceMonths());
+        player.setTeam(team);
         return playerRepository.save(player);
     }
 

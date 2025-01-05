@@ -1,4 +1,4 @@
-package com.challenge.manager.controller;
+package com.challenge.manager.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

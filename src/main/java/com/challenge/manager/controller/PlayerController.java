@@ -1,6 +1,7 @@
 package com.challenge.manager.controller;
 
 import com.challenge.manager.model.Player;
+import com.challenge.manager.model.PlayerCreateRequest;
 import com.challenge.manager.service.PlayerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,8 @@ public class PlayerController {
     }
 
     @PostMapping()
-    public ResponseEntity<Player> createPlayer(@Valid @RequestBody Player player){
-        Player createdPlayer = playerService.createPlayer(player);
+    public ResponseEntity<Player> createPlayer(@Valid @RequestBody PlayerCreateRequest request){
+        Player createdPlayer = playerService.createPlayer(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlayer);
     }
 
@@ -63,7 +64,4 @@ public class PlayerController {
         }
     }
 
-    //TODO: consider if including team object for the player creation isn't too much
-    //TODO: consider to add Global Exception Handling
-    //TODO: verify if Global Exception Handling handles @Valid exception
 }
